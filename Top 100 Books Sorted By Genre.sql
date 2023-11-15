@@ -55,10 +55,17 @@ WHERE genre ILIKE '%Children%' or genre ilike '%picture%';
 
 
 -- finding all books sitting in the Fiction genre
--- non fiction doesn't pull up in this dataset so it isn't created as a category
 select *
 from top
-WHERE genre ILIKE '%Fiction%';
+WHERE genre ILIKE '%Fiction%'
+	and genre not ilike '%non%';
+
+
+-- getting all books in the nonfiction section
+select *
+from top
+WHERE genre ILIKE '%non%' or genre ilike '%nonfiction%'
+	and genre not ilike '%fiction%'
 
 
 -- finding all books sitting in the Self Help genre
